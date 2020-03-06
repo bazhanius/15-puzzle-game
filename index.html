@@ -126,6 +126,42 @@
 
             console.log(field);
 
+            let cubes = document.querySelectorAll('.cube');
+
+            cubes.forEach((cube) => {
+                cube.addEventListener("click", function() {
+                    let cubeNumber = parseInt( this.getElementsByClassName('front')[0].textContent );
+                    let cube = getCubeParametersByNumber(cubeNumber);
+                    let emptySpot = getCubeParametersByNumber(0);
+
+                    let diffX = cube.positionX - emptySpot.positionX;
+                    let diffY = cube.positionY - emptySpot.positionY;
+
+                    let r;
+
+                    if (diffX === -1 && diffY === 0) {
+                        //right
+                        r = getCubeMovableToDirection('right');
+                        moveCube(r);
+                    } else if (diffX === 0 && diffY === -1) {
+                        //down
+                        r = getCubeMovableToDirection('down');
+                        moveCube(r);
+                    } else if (diffX === 1 && diffY === 0) {
+                        //left
+                        r = getCubeMovableToDirection('left');
+                        moveCube(r);
+                    } else if (diffX === 0 && diffY === 1) {
+                        //up
+                        r = getCubeMovableToDirection('up');
+                        moveCube(r);
+                    }
+
+                    console.log(diffX, diffY);
+
+                }, false);
+            });
+
             //
 
             function getCubeParametersByNumber(number) {
