@@ -9,11 +9,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: calc(100vh - 0.5px);
             margin: 0;
             padding: 0;
             perspective: 1000px;
             /*perspective-origin: center 5vw;*/
+        }
+
+        .menu {
+            margin-bottom: 3vw;
         }
 
         .tiles-container {
@@ -28,6 +33,7 @@
         }
 
         .cube {
+            cursor: pointer;
             transform-style: preserve-3d;
             transition: background-color 1s, transform 100ms;
         }
@@ -124,7 +130,47 @@
                 {'positionNumber': 16, 'cubeNumber':  0, 'positionX': 3, 'positionY': 3}
             ];
 
-            console.log(field);
+
+            /**
+             *  JS Fisher-Yates algorithm
+             *  http://en.wikipedia.org/wiki/Fisher-Yates_shuffle#The_modern_algorithm
+             */
+
+            function shuffleArray(a) {
+                for (let i = a.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [a[i], a[j]] = [a[j], a[i]];
+                }
+                return a;
+            }
+
+            let btnShuffle = document.querySelector('#shuffle');
+            let btnReset = document.querySelector('#reset');
+
+            btnShuffle.onclick = function() {
+                /*
+                let random = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].sort(function() {
+                    return .5 - Math.random();
+                });
+                */
+                let random = shuffleArray([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
+                for (let i=1; i<=16; i++) {
+                    field[i-1].cubeNumber = random[i-1];
+                    if (random[i-1] !== 0) {
+                        let cube = document.querySelector('.cube-' + random[i-1]);
+                        cube.style.transform = "translate(" + (field[i-1].positionX * 5) + "vw, " + (field[i-1].positionY * 5) + "vw)";
+                    }
+                }
+            };
+
+            btnReset.onclick = function() {
+                field[15].cubeNumber = 0;
+                for (let i=1; i<16; i++) {
+                    field[i-1].cubeNumber = i;
+                    let cube = document.querySelector('.cube-' + i);
+                    cube.style.transform = "translate(" + (field[i-1].positionX * 5) + "vw, " + (field[i-1].positionY * 5) + "vw)";
+                }
+            };
 
             let cubes = document.querySelectorAll('.cube');
 
@@ -161,8 +207,6 @@
 
                 }, false);
             });
-
-            //
 
             function getCubeParametersByNumber(number) {
                 return field.find(a => a.cubeNumber === number);
@@ -203,26 +247,10 @@
                 let cubeNumFrom = getCubeParametersByPositionXY(obj.fromX, obj.fromY);
                 let cubeNumTo = getCubeParametersByPositionXY(obj.toX, obj.toY);
                 let cube = document.querySelector('.cube-' + cubeNumFrom.cubeNumber);
-
-
                 field[ cubeNumTo.positionNumber-1 ].cubeNumber = cubeNumFrom.cubeNumber;
                 field[ cubeNumFrom.positionNumber-1 ].cubeNumber = 0;
-                console.log(cubeNumFrom.cubeNumber);
-                console.log(field);
-
                 cube.style.transform = "translate(" + (obj.toX * 5) + "vw, " + (obj.toY * 5) + "vw)";
             }
-
-            console.log(getCubeMovableToDirection('right'));
-
-            //let x = 0;
-            //let y = 0;
-            //let cube = document.querySelector('.cube-11');
-
-            //cube.addEventListener("click", function(){
-                //x++;
-                //cube.style.transform = "translateX(" + (x * 5) + "vw)";
-            //});
 
             window.onkeydown = function(event) {
                 if (event.defaultPrevented) {
@@ -237,28 +265,24 @@
                         console.log('Down Key pressed!');
                         r = getCubeMovableToDirection('down');
                         moveCube(r);
-                        //cube.style.transform = "translate(" + (x * 5) + "," + (y * 5) + "vw)";
                         break;
                     case "Up": // IE/Edge specific value
                     case "ArrowUp":
                         console.log('Up Key pressed!');
                         r = getCubeMovableToDirection('up');
                         moveCube(r);
-                        //cube.style.transform = "translateY(" + (y * 5) + "vw)";
                         break;
                     case "Left": // IE/Edge specific value
                     case "ArrowLeft":
                         console.log('Left Key pressed!');
                         r = getCubeMovableToDirection('left');
                         moveCube(r);
-                        //cube.style.transform = "translateX(" + (x * 5) + "vw)";
                         break;
                     case "Right": // IE/Edge specific value
                     case "ArrowRight":
                         console.log('Right Key pressed!');
                         r = getCubeMovableToDirection('right');
                         moveCube(r);
-                        //cube.style.transform = "translateX(" + (x * 5) + "vw)";
                         break;
                     case "Enter":
                         console.log('Enter Key pressed!');
@@ -270,9 +294,6 @@
                     default:
                         return; // Quit when this doesn't handle the key event.
                 }
-
-                //console.log("translate(" + (x * 5) + ", " + (y * 5) + "vw)");
-                //cube.style.transform = "translate(" + (x * 5) + "vw, " + (y * 5) + "vw)";
             }
         }
 
@@ -280,6 +301,11 @@
     </script>
 </head>
 <body>
+
+<div class="menu">
+    <button id="reset">Reset</button> <button id="shuffle">Shuffle</button>
+</div>
+
 <div class="tiles-container">
     <div class="cube cube-1">
         <div class="tile front">1</div>
