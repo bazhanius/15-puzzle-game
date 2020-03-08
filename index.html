@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <style>
         body {
+            --orange: #f48024;
+            --green: #5eba7d;
+            --yellow: #fbf2d4;
+            --red: #d1383d;
+
             display: flex;
             justify-content: center;
             align-items: center;
@@ -15,6 +20,88 @@
             padding: 0;
             perspective: 1000px;
             /*perspective-origin: center 5vw;*/
+        }
+
+        .countdown {
+            position: absolute;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            height: calc(100% - 0.5px);
+            width: calc(100% - 0.5px);
+            background-color: rgba(255, 255, 255, 0.5);
+            /*background: linear-gradient(#fff, transparent);*/
+
+            backdrop-filter: blur(2px);
+            perspective: 1000px;
+            z-index: 1000;
+
+            animation: shutdown 4s 1 forwards;
+        }
+
+        .countdown__digit {
+            position: absolute;
+            font-family: "Exo 2", sans-serif;
+            font-size: 25vw;
+            font-weight: bold;
+
+
+            /*text-shadow: -3px 0 rgb(30,242,241) , 3px 0 rgb(246,5,10);*/
+            /*text-shadow: -3px 0 black, 0 9px black, 9px 0 black, 0 -3px black;*/
+            text-shadow: 2px 2px 4px black, 0 0 1em white, 0 0 0.1em white;
+            color: var(--red);
+            /*color: #5eba7d;*/
+
+            opacity: 0;
+            transform: scale(0);
+            filter: blur(0);
+
+            animation: flyout 1s 1 ease-in;
+        }
+
+        .countdown__digit::after {
+            content: inherit;
+
+        }
+
+        .digit__delay-1 {
+            animation-delay: 2s;
+        }
+
+        .digit__delay-2 {
+            animation-delay: 1s;
+        }
+
+        .digit__delay-3 {
+            animation-delay: 0s;
+        }
+
+        .digit__delay-4 {
+            animation-delay: 3s;
+        }
+
+
+        @keyframes shutdown {
+            to {
+                visibility: hidden;
+            }
+        }
+
+        @keyframes flyout {
+            0% {
+                transform: scale(0.2);
+                opacity: 0;
+                filter: blur(2px);
+            }
+            50% {
+                transform: scale(1);
+                opacity: 1;
+                filter: blur(0);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         .menu {
@@ -146,31 +233,61 @@
 
             let btnShuffle = document.querySelector('#shuffle');
             let btnReset = document.querySelector('#reset');
+            let btnStart = document.querySelector('#start');
+
+            let cntdwn = document.querySelector('.countdown');
+
+            btnStart.onclick = function() {
+
+                cntdwn.style.display = 'flex';
+
+                let interval = setInterval(function(){
+                    sortFieldInOrder('random');
+                }, 3750);
+
+                setTimeout(function(){
+                    clearInterval(interval);
+                    cntdwn.style.display = 'none';
+                }, 4000);
+
+            };
 
             btnShuffle.onclick = function() {
-                /*
-                let random = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].sort(function() {
-                    return .5 - Math.random();
-                });
-                */
-                let random = shuffleArray([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
-                for (let i=1; i<=16; i++) {
-                    field[i-1].cubeNumber = random[i-1];
-                    if (random[i-1] !== 0) {
-                        let cube = document.querySelector('.cube-' + random[i-1]);
-                        cube.style.transform = "translate(" + (field[i-1].positionX * 5) + "vw, " + (field[i-1].positionY * 5) + "vw)";
-                    }
-                }
+                sortFieldInOrder('random');
             };
 
             btnReset.onclick = function() {
-                field[15].cubeNumber = 0;
-                for (let i=1; i<16; i++) {
-                    field[i-1].cubeNumber = i;
-                    let cube = document.querySelector('.cube-' + i);
-                    cube.style.transform = "translate(" + (field[i-1].positionX * 5) + "vw, " + (field[i-1].positionY * 5) + "vw)";
-                }
+                sortFieldInOrder('ascending');
             };
+
+            function sortFieldInOrder(type) {
+
+                if (type === 'ascending') {
+                    field[15].cubeNumber = 0;
+                    for (let i=1; i<16; i++) {
+                        field[i-1].cubeNumber = i;
+                        let cube = document.querySelector('.cube-' + i);
+                        cube.style.transform = "translate(" + (field[i-1].positionX * 5) + "vw, " + (field[i-1].positionY * 5) + "vw)";
+                    }
+                }
+
+                if (type === 'random') {
+                    /*
+                    let random = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].sort(function() {
+                    return .5 - Math.random();
+                    });
+                    */
+                    let random = shuffleArray([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
+                    for (let i=1; i<=16; i++) {
+                        field[i-1].cubeNumber = random[i-1];
+                        if (random[i-1] !== 0) {
+                            let cube = document.querySelector('.cube-' + random[i-1]);
+                            cube.style.transform = "translate(" + (field[i-1].positionX * 5) + "vw, " + (field[i-1].positionY * 5) + "vw)";
+                        }
+                    }
+                }
+
+            }
 
             let cubes = document.querySelectorAll('.cube');
 
@@ -302,8 +419,18 @@
 </head>
 <body>
 
+
+<div class="countdown">
+    <div class="countdown__digit digit__delay-1">1</div>
+    <div class="countdown__digit digit__delay-2">2</div>
+    <div class="countdown__digit digit__delay-3">3</div>
+    <div class="countdown__digit digit__delay-4">GO!</div>
+</div>
+
 <div class="menu">
-    <button id="reset">Reset</button> <button id="shuffle">Shuffle</button>
+    <button id="reset">Reset</button>
+    <button id="shuffle">Shuffle</button>
+    <button id="start">Start</button>
 </div>
 
 <div class="tiles-container">
