@@ -95,7 +95,8 @@ function ready() {
             for (let i=1; i<16; i++) {
                 field[i-1].cubeNumber = i;
                 let cube = document.querySelector('.cube-' + i);
-                cube.style.transform = "translate(" + (field[i-1].positionX * 5) + "vw, " + (field[i-1].positionY * 5) + "vw)";
+                //cube.style.transform = "translate(" + (field[i-1].positionX * 5) + "vw, " + (field[i-1].positionY * 5) + "vw)";
+                cube.style.transform  = "translateX(calc(var(--tile-width) * " + field[i-1].positionX + ")) translateY(calc(var(--tile-width) * " + field[i-1].positionY + "))";
             }
         }
 
@@ -110,7 +111,8 @@ function ready() {
                 field[i-1].cubeNumber = random[i-1];
                 if (random[i-1] !== 0) {
                     let cube = document.querySelector('.cube-' + random[i-1]);
-                    cube.style.transform = "translate(" + (field[i-1].positionX * 5) + "vw, " + (field[i-1].positionY * 5) + "vw)";
+                    //cube.style.transform = "translate(" + (field[i-1].positionX * 5) + "vw, " + (field[i-1].positionY * 5) + "vw)";
+                    cube.style.transform  = "translateX(calc(var(--tile-width) * " + field[i-1].positionX + ")) translateY(calc(var(--tile-width) * " + field[i-1].positionY + "))";
                 }
             }
         }
@@ -192,7 +194,8 @@ function ready() {
         let cube = document.querySelector('.cube-' + cubeNumFrom.cubeNumber);
         field[ cubeNumTo.positionNumber-1 ].cubeNumber = cubeNumFrom.cubeNumber;
         field[ cubeNumFrom.positionNumber-1 ].cubeNumber = 0;
-        cube.style.transform = "translate(" + (obj.toX * 5) + "vw, " + (obj.toY * 5) + "vw)";
+        //cube.style.transform = "translate(" + (obj.toX * 5) + "vw, " + (obj.toY * 5) + "vw)";
+        cube.style.transform = "translateX(calc(var(--tile-width) * " + obj.toX + ")) translateY(calc(var(--tile-width) * " + obj.toY + "))";
         checkCompletion();
     }
 

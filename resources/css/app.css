@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Exo+2:400,600,700&display=swap&subset=cyrillic,cyrillic-ext,latin-ext');
 
+
+
+@media only screen and (orientation : landscape) {
+    body {
+        --tile-width: 10vh;
+    }
+}
+
+@media only screen and (orientation : portrait) {
+    body {
+        --tile-width: 15vw;
+    }
+}
+
 body {
     --orange: #f48024;
     --green: #5eba7d;
@@ -109,13 +123,13 @@ canvas {
 }
 
 .menu {
-    margin-bottom: 3vw;
+    margin-bottom: calc(var(--tile-width) / 2.5);;
 }
 
 .tiles-container {
     display: inline-block;
-    width: calc(20vw);
-    height: calc(20vw);
+    width: calc(var(--tile-width) * 4);
+    height: calc(var(--tile-width) * 4);
     /*border: 2px dotted silver;*/
     background-color: #171717;
     transform-style: preserve-3d;
@@ -136,8 +150,8 @@ canvas {
         }
 */
 .tile {
-    width: 5vw;
-    height: 5vw;
+    width: var(--tile-width);
+    height: var(--tile-width);
     position: absolute;
     box-sizing: border-box;
     border-radius: 5px;
@@ -148,50 +162,50 @@ canvas {
     justify-content: center;
     align-items: center;
     font-family: "JetBrains Mono", monospace;
-    font-size: 2vw;
+    font-size: calc(var(--tile-width) / 2.5);
 }
 
 .left {
-    transform: translateX(-2.5vw) translateZ(2.5vw) rotateY(90deg);
+    transform: translateX(calc(var(--tile-width) / -2)) translateZ(calc(var(--tile-width) / 2)) rotateY(90deg);
     background: linear-gradient(to right,gold, #252525);
 }
 
 .right {
-    transform: translateX(2.5vw) translateZ(2.5vw) rotateY(90deg);
+    transform: translateX(calc(var(--tile-width) / 2)) translateZ(calc(var(--tile-width) / 2)) rotateY(90deg);
     background: linear-gradient(to right,gold, #252525);
 }
 .top {
-    transform: translateY(-2.5vw) translateZ(2.5vw) rotateX(90deg);
+    transform: translateY(calc(var(--tile-width) / -2)) translateZ(calc(var(--tile-width) / 2)) rotateX(90deg);
     background: linear-gradient(to top,gold, #252525);
 }
 
 .bottom {
-    transform: translateY(2.5vw) translateZ(2.5vw) rotateX(90deg);
+    transform: translateY(calc(var(--tile-width) / 2)) translateZ(calc(var(--tile-width) / 2)) rotateX(90deg);
     background: linear-gradient(to top,gold, #252525);
 }
 
 .front {
-    transform: translateZ(5vw);
+    transform: translateZ(var(--tile-width));
     background: gold;
 }
 
 .cube {transform: translateX(5vw)}
 
-.cube-1  {transform: translateX(0vw)  translateY(0vw);}
-.cube-2  {transform: translateX(5vw)  translateY(0vw);}
-.cube-3  {transform: translateX(10vw) translateY(0vw);}
-.cube-4  {transform: translateX(15vw) translateY(0vw);}
-.cube-5  {transform: translateX(0vw)  translateY(5vw);}
-.cube-6  {transform: translateX(5vw)  translateY(5vw);}
-.cube-7  {transform: translateX(10vw) translateY(5vw);}
-.cube-8  {transform: translateX(15vw) translateY(5vw);}
-.cube-9  {transform: translateX(0vw)  translateY(10vw);}
-.cube-10 {transform: translateX(5vw)  translateY(10vw);}
-.cube-11 {transform: translateX(10vw) translateY(10vw);}
-.cube-12 {transform: translateX(15vw) translateY(10vw);}
-.cube-13 {transform: translateX(0vw)  translateY(15vw);}
-.cube-14 {transform: translateX(5vw) translateY(15vw);}
-.cube-15 {transform: translateX(10vw) translateY(15vw);}
+.cube-1  {transform: translateX(0) translateY(0);}
+.cube-2  {transform: translateX(calc(var(--tile-width))) translateY(0);}
+.cube-3  {transform: translateX(calc(var(--tile-width) * 2)) translateY(0);}
+.cube-4  {transform: translateX(calc(var(--tile-width) * 3)) translateY(0);}
+.cube-5  {transform: translateX(0)  translateY(calc(var(--tile-width)));}
+.cube-6  {transform: translateX(calc(var(--tile-width)))  translateY(calc(var(--tile-width)));}
+.cube-7  {transform: translateX(calc(var(--tile-width) * 2)) translateY(calc(var(--tile-width)));}
+.cube-8  {transform: translateX(calc(var(--tile-width) * 3)) translateY(calc(var(--tile-width)));}
+.cube-9  {transform: translateX(0)  translateY(calc(var(--tile-width) * 2));}
+.cube-10 {transform: translateX(calc(var(--tile-width)))  translateY(calc(var(--tile-width) * 2));}
+.cube-11 {transform: translateX(calc(var(--tile-width) * 2)) translateY(calc(var(--tile-width) * 2));}
+.cube-12 {transform: translateX(calc(var(--tile-width) * 3)) translateY(calc(var(--tile-width) * 2));}
+.cube-13 {transform: translateX(0)  translateY(calc(var(--tile-width) * 3));}
+.cube-14 {transform: translateX(calc(var(--tile-width))) translateY(calc(var(--tile-width) * 3));}
+.cube-15 {transform: translateX(calc(var(--tile-width) * 2)) translateY(calc(var(--tile-width) * 3));}
 
 
 /* Shake animation */
