@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Exo+2:400,600,700&display=swap&subset=cyrillic,cyrillic-ext,latin-ext');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@400;500;600&display=swap');
 
 
 
@@ -15,11 +16,26 @@
 }
 
 body {
+    --black: #242729;
     --orange: #f48024;
     --green: #5eba7d;
     --yellow: #fbf2d4;
     --red: #d1383d;
+    --white: #ece5da;
+    --blue: #0095ff;
+    --blue-dark: #0077cc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: calc(100vh - 0.5px);
+    width: calc(100vw - 0.5px);
+    margin: 0;
+    padding: 0;
+    background-color: var(--yellow);
+}
 
+.game-screen {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,14 +47,64 @@ body {
     /*perspective-origin: center 5vw;*/
 }
 
+.game-metrics {
+    display: flex;
+    justify-content: space-between;
+    font-family: "JetBrains Mono", monospace;
+    width: calc(var(--tile-width) * 4);
+    color: #373737;
+}
+
+button {
+    background: linear-gradient(to right, var(--red), var(--orange));
+    color: var(--yellow);
+
+    font-family: "Exo 2", sans-serif;
+    font-weight: bold;
+    font-size: calc(var(--tile-width) * 0.25);
+    width: calc(var(--tile-width) * 3);
+    border: 0;
+    border-radius: 4px;
+    padding: calc(var(--tile-width) * 0.1) calc(var(--tile-width) * 0.2);
+    margin: 0 0 calc(var(--tile-width) * 0.2) 0;
+    transition: box-shadow 100ms, color 250ms, transform 100ms, scale 100ms;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-shadow: 3px 3px 0 #373737;
+
+    text-shadow: 1px 1px 0 #373737;
+
+    cursor: pointer;
+}
+
+button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 #373737;
+}
 /*
-canvas {
-    display: block;
-    position: absolute;
-    z-index: 1;
-    pointer-events: none;
+button:hover {
+    transform: translate(-2px, 0);
 }
 */
+button:active, button:hover {
+    color: #fff;
+}
+
+
+canvas {
+    /*display: block;
+    position: absolute;
+
+    height: calc(100vh - 0.5px);
+    width: calc(100vw - 0.5px);
+
+    z-index: 10000;
+    transform-style: preserve-3d;
+    transform: translateZ(var(--tile-width));*/
+    pointer-events: none;
+}
+
 .countdown {
     position: absolute;
     display: none;
@@ -122,8 +188,58 @@ canvas {
     }
 }
 
-.menu {
-    margin-bottom: calc(var(--tile-width) / 2.5);;
+h1 {
+    font-size: calc(var(--tile-width) * 1.5);
+    margin: 0;
+    padding: 0 0 calc(var(--tile-width) * 0.75) 0;
+    font-family: 'Baloo Chettan 2', cursive;
+    font-weight: 600;
+
+
+    background: #00467F;
+    background: linear-gradient(to right, var(--blue), #A5CC82); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+
+    filter: drop-shadow(4px 4px 0 var(--black));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+
+/*
+    color: var(--blue-dark);
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-shadow: 3px 3px 0 var(--yellow), 6px 6px 0 #ccc;
+*/
+}
+
+.main-menu-screen {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: calc(100vh - 0.5px);
+    width: calc(100vw - 0.5px);
+    background: linear-gradient(to top, rgba(251,242,212, 1), rgba(251,242,212, 0.9));
+    /*background: linear-gradient(to right, #ff9, #c9c);*/
+
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0;
+
+    font-family: "Exo 2", sans-serif;
+
+    /*background: linear-gradient(#fff, transparent);*/
+
+    /*backdrop-filter: blur(2px);*/
+    /*backdrop-filter: grayscale(100%) blur(3px);
+    transform-style: preserve-3d;
+    transform: translateZ(10vw);*/
 }
 
 .tiles-container {
@@ -133,7 +249,7 @@ canvas {
     /*border: 2px dotted silver;*/
     background-color: #171717;
     transform-style: preserve-3d;
-    transform: rotateX(10deg);
+    transform: rotateX(15deg);
     /*animation: rotate 20s infinite linear;*/
 }
 
@@ -154,7 +270,7 @@ canvas {
     height: var(--tile-width);
     position: absolute;
     box-sizing: border-box;
-    border-radius: 5px;
+    border-radius: 2px;
     border: 1px solid #171717;
     /*opacity: .7;*/
 

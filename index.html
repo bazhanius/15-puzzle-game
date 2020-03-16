@@ -4,140 +4,136 @@
     <title>15 game puzzle</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <style>
-
-    </style>
-    <script>
-
-    </script>
-
     <script src="resources/js/confetti.js" type="text/javascript"></script>
-
     <link href="resources/css/app.css" rel="stylesheet" type="text/css" />
     <script src="resources/js/app.js" type="text/javascript"></script>
-
-
-    <script>
-
-    </script>
-
 </head>
 <body>
 
-<div class="menu">
-    <button id="reset">Reset</button>
+<div class="game-screen">
+    <div class="tiles-container">
+        <div class="cube cube-1">
+            <div class="tile front">1</div>
+            <div class="tile left"></div>
+            <div class="tile right"></div>
+            <div class="tile top"></div>
+            <div class="tile bottom"></div>
+        </div>
+        <div class="cube cube-2">
+            <div class="tile front">2</div>
+            <div class="tile left"></div>
+            <div class="tile right"></div>
+            <div class="tile top"></div>
+            <div class="tile bottom"></div>
+        </div>
+        <div class="cube cube-3">
+            <div class="tile front">3</div>
+            <div class="tile left"></div>
+            <div class="tile right"></div>
+            <div class="tile top"></div>
+            <div class="tile bottom"></div>
+        </div>
+        <div class="cube cube-4">
+            <div class="tile front">4</div>
+            <div class="tile left"></div>
+            <div class="tile right"></div>
+            <div class="tile top"></div>
+            <div class="tile bottom"></div>
+        </div>
+        <div class="cube cube-5">
+            <div class="tile front">5</div>
+            <div class="tile left"></div>
+            <div class="tile right"></div>
+            <div class="tile top"></div>
+            <div class="tile bottom"></div>
+        </div>
+        <div class="cube cube-6">
+            <div class="tile front">6</div>
+            <div class="tile left"></div>
+            <div class="tile right"></div>
+            <div class="tile top"></div>
+            <div class="tile bottom"></div>
+        </div>
+        <div class="cube cube-7">
+            <div class="tile front">7</div>
+            <div class="tile left"></div>
+            <div class="tile right"></div>
+            <div class="tile top"></div>
+            <div class="tile bottom"></div>
+        </div>
+        <div class="cube cube-8">
+            <div class="tile front">8</div>
+            <div class="tile left"></div>
+            <div class="tile right"></div>
+            <div class="tile top"></div>
+            <div class="tile bottom"></div>
+        </div>
+        <div class="cube cube-9">
+            <div class="tile front">9</div>
+            <div class="tile left"></div>
+            <div class="tile right"></div>
+            <div class="tile top"></div>
+            <div class="tile bottom"></div>
+        </div>
+        <div class="cube cube-10">
+            <div class="tile front">10</div>
+            <div class="tile left"></div>
+            <div class="tile right"></div>
+            <div class="tile top"></div>
+            <div class="tile bottom"></div>
+        </div>
+        <div class="cube cube-11">
+            <div class="tile front">11</div>
+            <div class="tile left"></div>
+            <div class="tile right"></div>
+            <div class="tile top"></div>
+            <div class="tile bottom"></div>
+        </div>
+        <div class="cube cube-12">
+            <div class="tile front">12</div>
+            <div class="tile left"></div>
+            <div class="tile right"></div>
+            <div class="tile top"></div>
+            <div class="tile bottom"></div>
+        </div>
+        <div class="cube cube-13">
+            <div class="tile front">13</div>
+            <div class="tile left"></div>
+            <div class="tile right"></div>
+            <div class="tile top"></div>
+            <div class="tile bottom"></div>
+        </div>
+        <div class="cube cube-14">
+            <div class="tile front">14</div>
+            <div class="tile left"></div>
+            <div class="tile right"></div>
+            <div class="tile top"></div>
+            <div class="tile bottom"></div>
+        </div>
+        <div class="cube cube-15">
+            <div class="tile front">15</div>
+            <div class="tile left"></div>
+            <div class="tile right"></div>
+            <div class="tile top"></div>
+            <div class="tile bottom"></div>
+        </div>
+    </div>
+
+    <div class="game-metrics">
+        <div class="game-moves">0</div>
+        <div class="game-time">00:00</div>
+    </div>
+
+    <button id="reset">Exit</button>
     <button id="shuffle">Shuffle</button>
-    <button id="start">Start</button>
-    <button id="stopConfetti">Stop Confetti</button>
-    <button id="startConfetti">Start Confetti</button>
+    <button id="random-move">Random Move</button>
 </div>
 
-<div class="tiles-container">
-    <div class="cube cube-1">
-        <div class="tile front">1</div>
-        <div class="tile left"></div>
-        <div class="tile right"></div>
-        <div class="tile top"></div>
-        <div class="tile bottom"></div>
-    </div>
-    <div class="cube cube-2">
-        <div class="tile front">2</div>
-        <div class="tile left"></div>
-        <div class="tile right"></div>
-        <div class="tile top"></div>
-        <div class="tile bottom"></div>
-    </div>
-    <div class="cube cube-3">
-        <div class="tile front">3</div>
-        <div class="tile left"></div>
-        <div class="tile right"></div>
-        <div class="tile top"></div>
-        <div class="tile bottom"></div>
-    </div>
-    <div class="cube cube-4">
-        <div class="tile front">4</div>
-        <div class="tile left"></div>
-        <div class="tile right"></div>
-        <div class="tile top"></div>
-        <div class="tile bottom"></div>
-    </div>
-    <div class="cube cube-5">
-        <div class="tile front">5</div>
-        <div class="tile left"></div>
-        <div class="tile right"></div>
-        <div class="tile top"></div>
-        <div class="tile bottom"></div>
-    </div>
-    <div class="cube cube-6">
-        <div class="tile front">6</div>
-        <div class="tile left"></div>
-        <div class="tile right"></div>
-        <div class="tile top"></div>
-        <div class="tile bottom"></div>
-    </div>
-    <div class="cube cube-7">
-        <div class="tile front">7</div>
-        <div class="tile left"></div>
-        <div class="tile right"></div>
-        <div class="tile top"></div>
-        <div class="tile bottom"></div>
-    </div>
-    <div class="cube cube-8">
-        <div class="tile front">8</div>
-        <div class="tile left"></div>
-        <div class="tile right"></div>
-        <div class="tile top"></div>
-        <div class="tile bottom"></div>
-    </div>
-    <div class="cube cube-9">
-        <div class="tile front">9</div>
-        <div class="tile left"></div>
-        <div class="tile right"></div>
-        <div class="tile top"></div>
-        <div class="tile bottom"></div>
-    </div>
-    <div class="cube cube-10">
-        <div class="tile front">10</div>
-        <div class="tile left"></div>
-        <div class="tile right"></div>
-        <div class="tile top"></div>
-        <div class="tile bottom"></div>
-    </div>
-    <div class="cube cube-11">
-        <div class="tile front">11</div>
-        <div class="tile left"></div>
-        <div class="tile right"></div>
-        <div class="tile top"></div>
-        <div class="tile bottom"></div>
-    </div>
-    <div class="cube cube-12">
-        <div class="tile front">12</div>
-        <div class="tile left"></div>
-        <div class="tile right"></div>
-        <div class="tile top"></div>
-        <div class="tile bottom"></div>
-    </div>
-    <div class="cube cube-13">
-        <div class="tile front">13</div>
-        <div class="tile left"></div>
-        <div class="tile right"></div>
-        <div class="tile top"></div>
-        <div class="tile bottom"></div>
-    </div>
-    <div class="cube cube-14">
-        <div class="tile front">14</div>
-        <div class="tile left"></div>
-        <div class="tile right"></div>
-        <div class="tile top"></div>
-        <div class="tile bottom"></div>
-    </div>
-    <div class="cube cube-15">
-        <div class="tile front">15</div>
-        <div class="tile left"></div>
-        <div class="tile right"></div>
-        <div class="tile top"></div>
-        <div class="tile bottom"></div>
-    </div>
+<div class="main-menu-screen">
+    <h1>15 puzzle</h1>
+    <button id="start">START</button>
+    <button id="stopConfetti">Stop Confetti</button>
+    <button id="startConfetti">Start Confetti</button>
 </div>
 
 <div class="countdown">
@@ -146,8 +142,6 @@
     <div class="countdown__digit digit__delay-3">3</div>
     <div class="countdown__digit digit__delay-4">GO!</div>
 </div>
-
-
 
 </body>
 </html>
