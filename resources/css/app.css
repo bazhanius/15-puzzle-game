@@ -29,8 +29,8 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: calc(100% - 0.5px);
-    width: calc(100% - 0.5px);
+    width: calc(100vw - 0.5px);
+    height: calc(100vh - 0.5px);
     margin: 0;
     padding: 0;
     /*background-color: var(--yellow);*/
