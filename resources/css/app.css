@@ -31,6 +31,7 @@ body {
     flex-direction: column;
     width: calc(100vw - 0.5px);
     height: calc(100vh - 0.5px);
+    overflow: hidden;
     margin: 0;
     padding: 0;
     /*background-color: var(--yellow);*/
@@ -455,37 +456,5 @@ h3 {
     display: none;
     position: absolute;
     top: calc(var(--tile-width) / 3);
-    left: calc(var(--tile-width) / 2);
+    left: calc(var(--tile-width) / 3);
 }
-/*
-.x-close-svg {
-    width: calc(var(--tile-width));
-    height: calc(var(--tile-width));
-}
-
-.x-close-svg:hover, .x-close-svg:focus {
-    cursor: pointer;
-}
-
-.x-close-svg:hover > .x-mark-2 {
-    stroke: blueviolet;
-}
-
-.x-close-svg:hover > .x-mark-1 {
-    fill: #eee;
-}
-
-.x-mark-2 {
-    fill: none;
-    stroke: #888;
-    stroke-width: 32;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.x-mark-1 {
-    fill: none;
-    stroke: #000;
-    stroke-width: 0;
-}
-*/
