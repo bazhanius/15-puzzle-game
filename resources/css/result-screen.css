@@ -1,0 +1,72 @@
+/**
+ *
+ * Copyright (c) 2020 Alexander Bazhanov
+ * https://github.com/bazhanius/
+ *
+ */
+
+.result-screen {
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: calc(100vw - 0.5px);
+    height: calc(100vh - 0.5px);
+    border: 0;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.result-screen__highlights {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: var(--tile-width);
+}
+
+.result-screen__header {
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: var(--tile-width);
+}
+
+#check-mark {
+    width: calc(var(--tile-width) * 3);
+    height: calc(var(--tile-width) * 3);
+    filter: drop-shadow(2px 1px 0 white);
+    overflow: visible;
+}
+
+.check-mark-fig-1, .check-mark-fig-2 {
+    fill: none;
+    stroke: #0c6;
+    stroke-width: calc(var(--tile-width) / 2);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.check-mark-fig-2 {
+    stroke-dasharray: 100%;
+    stroke-dashoffset: 100%;
+    animation: dash 250ms 1 forwards ease-in;
+    animation-delay: 250ms;
+}
+
+@keyframes dash {
+    from {
+        stroke-dashoffset: 100%;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}

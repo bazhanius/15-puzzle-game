@@ -1,116 +1,131 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
     <title>15 game puzzle</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- MDI Fonts -->
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.0.45/css/materialdesignicons.min.css">
+
+
     <script src="resources/js/confetti.js" type="text/javascript"></script>
     <link href="resources/css/app.css" rel="stylesheet" type="text/css" />
+    <link href="resources/css/main-menu-screen.css" rel="stylesheet" type="text/css" />
+    <link href="resources/css/transition-screen.css" rel="stylesheet" type="text/css" />
+    <link href="resources/css/result-screen.css" rel="stylesheet" type="text/css" />
+    <link href="resources/css/scores-screen.css" rel="stylesheet" type="text/css" />
+
+    <script src="resources/js/modules/counters.js" type="text/javascript"></script>
+    <script src="resources/js/modules/field.js" type="text/javascript"></script>
+
+    <script src="resources/js/modules/actions.js" type="text/javascript"></script>
+
     <script src="resources/js/app.js" type="text/javascript"></script>
 </head>
 <body>
 
 <div class="game-screen">
     <div class="tiles-container">
-        <div class="cube cube-1">
+        <div class="cube cube-1 pointer-cursor">
             <div class="tile front">1</div>
             <div class="tile left"></div>
             <div class="tile right"></div>
             <div class="tile top"></div>
             <div class="tile bottom"></div>
         </div>
-        <div class="cube cube-2">
+        <div class="cube cube-2 pointer-cursor">
             <div class="tile front">2</div>
             <div class="tile left"></div>
             <div class="tile right"></div>
             <div class="tile top"></div>
             <div class="tile bottom"></div>
         </div>
-        <div class="cube cube-3">
+        <div class="cube cube-3 pointer-cursor">
             <div class="tile front">3</div>
             <div class="tile left"></div>
             <div class="tile right"></div>
             <div class="tile top"></div>
             <div class="tile bottom"></div>
         </div>
-        <div class="cube cube-4">
+        <div class="cube cube-4 pointer-cursor">
             <div class="tile front">4</div>
             <div class="tile left"></div>
             <div class="tile right"></div>
             <div class="tile top"></div>
             <div class="tile bottom"></div>
         </div>
-        <div class="cube cube-5">
+        <div class="cube cube-5 pointer-cursor">
             <div class="tile front">5</div>
             <div class="tile left"></div>
             <div class="tile right"></div>
             <div class="tile top"></div>
             <div class="tile bottom"></div>
         </div>
-        <div class="cube cube-6">
+        <div class="cube cube-6 pointer-cursor">
             <div class="tile front">6</div>
             <div class="tile left"></div>
             <div class="tile right"></div>
             <div class="tile top"></div>
             <div class="tile bottom"></div>
         </div>
-        <div class="cube cube-7">
+        <div class="cube cube-7 pointer-cursor">
             <div class="tile front">7</div>
             <div class="tile left"></div>
             <div class="tile right"></div>
             <div class="tile top"></div>
             <div class="tile bottom"></div>
         </div>
-        <div class="cube cube-8">
+        <div class="cube cube-8 pointer-cursor">
             <div class="tile front">8</div>
             <div class="tile left"></div>
             <div class="tile right"></div>
             <div class="tile top"></div>
             <div class="tile bottom"></div>
         </div>
-        <div class="cube cube-9">
+        <div class="cube cube-9 pointer-cursor">
             <div class="tile front">9</div>
             <div class="tile left"></div>
             <div class="tile right"></div>
             <div class="tile top"></div>
             <div class="tile bottom"></div>
         </div>
-        <div class="cube cube-10">
+        <div class="cube cube-10 pointer-cursor">
             <div class="tile front">10</div>
             <div class="tile left"></div>
             <div class="tile right"></div>
             <div class="tile top"></div>
             <div class="tile bottom"></div>
         </div>
-        <div class="cube cube-11">
+        <div class="cube cube-11 pointer-cursor">
             <div class="tile front">11</div>
             <div class="tile left"></div>
             <div class="tile right"></div>
             <div class="tile top"></div>
             <div class="tile bottom"></div>
         </div>
-        <div class="cube cube-12">
+        <div class="cube cube-12 pointer-cursor">
             <div class="tile front">12</div>
             <div class="tile left"></div>
             <div class="tile right"></div>
             <div class="tile top"></div>
             <div class="tile bottom"></div>
         </div>
-        <div class="cube cube-13">
+        <div class="cube cube-13 pointer-cursor">
             <div class="tile front">13</div>
             <div class="tile left"></div>
             <div class="tile right"></div>
             <div class="tile top"></div>
             <div class="tile bottom"></div>
         </div>
-        <div class="cube cube-14">
+        <div class="cube cube-14 pointer-cursor">
             <div class="tile front">14</div>
             <div class="tile left"></div>
             <div class="tile right"></div>
             <div class="tile top"></div>
             <div class="tile bottom"></div>
         </div>
-        <div class="cube cube-15">
+        <div class="cube cube-15 pointer-cursor">
             <div class="tile front">15</div>
             <div class="tile left"></div>
             <div class="tile right"></div>
@@ -119,21 +134,111 @@
         </div>
     </div>
 
-    <div class="game-metrics">
+    <div class="game-metrics hidden">
         <div class="game-moves">0</div>
         <div class="game-time">00:00</div>
     </div>
 
-    <button id="reset">Exit</button>
-    <button id="shuffle">Shuffle</button>
-    <button id="random-move">Random Move</button>
+    <div class="game-screen__buttons hidden">
+        <button id="exit">Exit</button>
+    </div>
+
 </div>
 
 <div class="main-menu-screen">
-    <h1>15 puzzle</h1>
-    <button id="start">START</button>
-    <button id="stopConfetti">Stop Confetti</button>
-    <button id="startConfetti">Start Confetti</button>
+
+    <div class="game-title">
+        <span class="game-title__text">15 puzzle</span>
+    </div>
+
+    <div class="main-menu-options">
+
+        <div class="game-menu-option" id="start">
+            <span class="game-menu-option__icon mdi mdi-play-circle-outline"></span>
+            <span class="game-menu-option__title">Play</span>
+        </div>
+
+        <div class="game-menu-option" id="scores">
+            <span class="game-menu-option__icon mdi mdi-format-list-numbered"></span>
+            <span class="game-menu-option__title">Scores</span>
+        </div>
+
+        <div class="game-menu-option">
+            <span class="game-menu-option__icon mdi mdi-github"></span>
+            <span class="game-menu-option__title">GitHub</span>
+            <!--
+            <a href="https://github.com/bazhanius/15-puzzle-game">View on Github</a>
+            -->
+        </div>
+
+    </div>
+
+</div>
+
+<div class="result-screen">
+
+    <div class="result-screen__header">
+        <div class="game-title">
+            <span class="game-title__text game-title__text-small">Congratulations!</span>
+        </div>
+    </div>
+
+    <div class="check-mark">
+        <svg id="check-mark" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+            <!--
+            <defs>
+                <linearGradient id="check-mark-gradient" x1="100%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#5eaefd" />
+                    <stop offset="100%" stop-color="#00bc9b" />
+                </linearGradient>
+            </defs>
+            -->
+            <circle class="check-mark-fig-1" cx="256" cy="257" r="239"/>
+            <path class="check-mark-fig-2" d="M144,247l81,79L367,186"/>
+        </svg>
+    </div>
+<!--
+    <div class="result-screen__highlights">
+        <button id="main-menu">Main menu</button>
+    </div>
+    -->
+</div>
+
+<div class="scores-screen">
+    <div class="game-title">
+        <span class="game-title__text game-title__text-small">High scores</span>
+    </div>
+    <div class="scores-container">
+        <table>
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Nickname</th>
+                <th>Moves</th>
+                <th>Time</th>
+            </tr>
+            </thead>
+            <tbody class="high-scores">
+            <tr>
+                <td colspan="4">No data.</td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<div class="x-close">
+    <div class="game-menu-option">
+        <span class="game-menu-option__icon mdi mdi-arrow-left"></span>
+        <span class="game-menu-option__title">Menu</span>
+    </div>
+</div>
+
+<div class="transition-screen">
+    <div class="rect rect-one"></div>
+    <div class="rect rect-two"></div>
+    <div class="rect rect-three"></div>
 </div>
 
 <div class="countdown">
@@ -142,6 +247,8 @@
     <div class="countdown__digit digit__delay-3">3</div>
     <div class="countdown__digit digit__delay-4">GO!</div>
 </div>
+
+
 
 </body>
 </html>
