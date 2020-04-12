@@ -7,61 +7,45 @@
 
 .transition-screen {
     position: absolute;
+    top: 0;
+    left: 0;
     display: none;
-    width: calc(100vw - 0.5px);
-    height: calc(100vh - 0.5px);
-    border: 0;
     background-color: transparent;
+    width: calc(100% - 0.5px);
+    height: calc(100% - 0.5px);
+    border: 0;
     margin: 0;
     padding: 0;
     overflow: hidden;
 }
 
-.rect {
-    width: 0;
-    height: 40%;
-    position: absolute;
-    border: 3px solid;
-    border-image: linear-gradient(20deg, #f92056 38%, #00deff 65%);
-    border-image-slice: 1;
-}
-
-.rect__fly-in {
-    width: 0;
-    animation: fly-in 500ms 1 forwards;
-}
-
-.rect__fly-out {
-    width: 100%;
-    animation: fly-out 500ms 1 forwards;
-}
-
-.rect-one {
+.circle {
     top: 0;
-    left: -3%;
-    /*transform: rotate(-2deg);*/
-    background-color: #fff;
-    animation-delay: 1000ms;
-}
-.rect-two {
-    top: 33%;
-    right: -3%;
-    /*transform: rotate(2deg);*/
-    background-color: #fff;
-    animation-delay: 500ms;
-}
-.rect-three {
-    top: 66%;
-    left: -3%;
-    /*transform: rotate(-2deg);*/
-    background-color: #fff;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    clip-path: circle(0% at 50% 50%);
+    background-color: #fbf87a;
+    opacity: .5;
     animation-delay: 0ms;
 }
 
+.circle__fly-in {
+    animation: fly-in 500ms 1 forwards;
+}
+
+.circle__fly-out {
+    animation: fly-out 500ms 1 forwards;
+}
+
+
 @keyframes fly-in {
-    to {width: 100%;}
+    from {clip-path: circle(0% at var(--clickX, 50%) var(--clickY, 50%)); opacity: .5;}
+    to {clip-path: circle(80% at 50% 50%); opacity: 1;}
 }
 
 @keyframes fly-out {
-    to {width: 0;}
+    from {clip-path: circle(80% at 50% 50%); opacity: 1;}
+    to {clip-path: circle(0% at 50% 50%); opacity: .5;}
 }

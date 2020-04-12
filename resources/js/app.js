@@ -9,6 +9,26 @@ let gameState;
 
 function ready() {
 
+    let buttonClicks = document.querySelectorAll('.game-menu-option');
+    buttonClicks.forEach( (x) => {
+        x.addEventListener("click", function(e) {
+            document.documentElement.style.setProperty('--clickX', `${e.clientX}px`);
+            document.documentElement.style.setProperty('--clickY', `${e.clientY}px`);
+        });
+    });
+
+    function resizeWindow() {
+        document.documentElement.style.setProperty('height', `${window.innerHeight}px`);
+        document.documentElement.style.setProperty('width', `${window.innerWidth}px`);
+    }
+
+    // We listen to the resize event
+    window.addEventListener('resize', () => {
+        resizeWindow();
+    });
+
+    resizeWindow();
+
 
     let btnExit = document.querySelector('#exit');
     let btnStart = document.querySelector('#start');
@@ -27,7 +47,7 @@ function ready() {
     let scoresScreen = document.querySelector('.scores-screen');
 
     let transitionScreen = document.querySelector('.transition-screen');
-    let transitionScreenRects = document.querySelectorAll('.rect');
+    let transitionScreenCircle = document.querySelector('.circle');
 
     let resultScreen = document.querySelector('.result-screen');
 
@@ -97,26 +117,20 @@ function ready() {
         transition(type) {
             transitionScreen.style.display = 'flex';
 
-            transitionScreenRects.forEach((x) => {
-                x.classList.add('rect__fly-in');
-            });
+            transitionScreenCircle.classList.add('circle__fly-in');
 
             setTimeout(function(){
-                transitionScreenRects.forEach((x) => {
-                    x.classList.remove('rect__fly-in');
-                    x.classList.add('rect__fly-out');
-                    if (type === 'toMainMenu') gameState.mainMenu();
-                    if (type === 'toPlay') gameState.readyCheck();
-                    if (type === 'toScores') gameState.scores();
-                });
-            }, 1500);
+                transitionScreenCircle.classList.remove('circle__fly-in');
+                transitionScreenCircle.classList.add('circle__fly-out');
+                if (type === 'toMainMenu') gameState.mainMenu();
+                if (type === 'toPlay') gameState.readyCheck();
+                if (type === 'toScores') gameState.scores();
+            }, 750);
 
             setTimeout(function(){
-                transitionScreenRects.forEach((x) => {
-                    x.classList.remove('rect__fly-out');
-                });
+                transitionScreenCircle.classList.remove('circle__fly-out');
                 transitionScreen.style.display = 'none';
-            }, 3000);
+            }, 1500);
 
 
         },

@@ -7,12 +7,14 @@
 
 .result-screen {
     position: absolute;
+    top: 0;
+    left: 0;
     display: none;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: calc(100vw - 0.5px);
-    height: calc(100vh - 0.5px);
+    width: calc(100% - 0.5px);
+    height: calc(100% - 0.5px);
     border: 0;
     background-color: transparent;
     margin: 0;
@@ -33,11 +35,6 @@
 .result-screen__header {
     position: absolute;
     top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: var(--tile-width);
 }
 
 #check-mark {
