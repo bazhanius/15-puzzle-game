@@ -29,10 +29,7 @@ function ready() {
 
     resizeWindow();
 
-
-    let btnExit = document.querySelector('#exit');
     let btnStart = document.querySelector('#start');
-    let btnMainMenu = document.querySelector('#main-menu');
 
     let gameMetrics = document.querySelector('.game-metrics');
 
@@ -153,27 +150,14 @@ function ready() {
 
     btnStart.onclick = function() {
         gameState.transition('toPlay');
+    };
 
-        //setTimeout(function(){
-        //    gameState.readyCheck();
-        //}, 500);
-    };
-/*
-    btnMainMenu.onclick = function() {
-        gameState.transition('toMainMenu');
-    };
-*/
     btnScores.onclick = function() {
         gameState.transition('toScores');
     };
 
     btnClose.onclick = function() {
         gameState.transition('toMainMenu');
-    };
-
-    btnExit.onclick = function() {
-        gameState.reset();
-        //gameState.exit();
     };
 
     actions.keyEvents.init();

@@ -42,7 +42,7 @@
 
 @keyframes fly-in {
     from {clip-path: circle(0% at var(--clickX, 50%) var(--clickY, 50%)); opacity: .5;}
-    to {clip-path: circle(80% at 50% 50%); opacity: 1;}
+    to {clip-path: circle(150% at var(--clickX, 50%) var(--clickY, 50%)); opacity: 1;}
 }
 
 @keyframes fly-out {

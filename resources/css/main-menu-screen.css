@@ -6,19 +6,6 @@
  */
 
 .main-menu-screen {
-    /*
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    width: calc(100% - 0.5px);
-    height: calc(100% - 0.5px);
-    overflow: hidden;
-    padding: 0;
-    margin: 0;*/
     position: absolute;
     top: 0;
     left: 0;
@@ -46,6 +33,7 @@
 
 .game-title {
     margin: calc(var(--tile-width) * .7) 0;
+    pointer-events: none;
 }
 
 .game-title::before {
@@ -56,7 +44,8 @@
     top: 15%;
     left: 0;
     z-index: -1;
-    background-color: #fbf87a;
+    /*background-color: #fbf87a;*/
+    background-color: #FEF102;
     transform: rotate(-2deg);
 }
 
@@ -65,9 +54,12 @@
     padding: 0 10px;
     text-shadow: 2px 1px 0 white;
     font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    line-height: 1.07143;
+    letter-spacing: -.005em;
     font-size: calc(var(--tile-width));
-    font-weight: 700;
-    color: #07c;
+    /*color: #07c;*/
+    color: #06c;
 }
 
 .game-title__text-small {
@@ -81,35 +73,35 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /*font-family: "JetBrains Mono", sans-serif;*/
-    /*font-weight: 500;
-    margin: 10px;*/
-    /*color: #07c; #504bcb*/
-    /*text-shadow: 2px 1px 0 white;*/
-
     font-family: "Oswald Mono", sans-serif;
     font-weight: 500;
-    color: #504bcb;
-    /*color: #2e2f3e;*/
+    color: #0077ED;
     text-shadow: 2px 1px 0 white;
     text-transform: uppercase;
-    letter-spacing: .35em;
+    letter-spacing: .3em;
     line-height: 40px;
     font-size: 12px;
-
     margin: 10px 5px;
 }
 
 .game-menu-option__icon {
+    color: #0077ED;
+    text-shadow: 2px 1px 0 white;
     padding: 0 10px;
     font-size: calc(var(--tile-width));
-    transform: scale(0.9);
+    transform: scale(0.8);
     transition: all .2s ease-in-out;
+}
+
+.game-menu-option__title {
+    color: #06c;
+    text-shadow: 2px 1px 0 white;
+    padding: 0 10px;
 }
 
 .game-menu-option:hover {
     cursor: pointer;
-    color: #413cc7;
+    color: #1d1d1f;
 }
 
 .game-menu-option::before {
@@ -126,14 +118,10 @@
 }
 
 .game-menu-option:hover::before {
-    background-color: #edf5e4;
+    background-color: #FEF102;
     width: 100%;
 }
 
 .game-menu-option:hover > .game-menu-option__icon {
-    transform: scale(1.1);
-}
-
-.game-menu-option__title {
-    padding: 0 10px;
+    transform: scale(1.0);
 }

@@ -46,23 +46,31 @@
 
 .check-mark-fig-1, .check-mark-fig-2 {
     fill: none;
-    stroke: #0c6;
+    stroke: #3bd53e;
     stroke-width: calc(var(--tile-width) / 2);
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    stroke-linecap: butt;
+    stroke-linejoin: arcs;
+}
+.check-mark-fig-1 {
+    stroke-dasharray: 0, 2357;
+    animation: dash-1 500ms 1 forwards ease-in;
+    animation-delay: 0ms;
+}
+
+@keyframes dash-1 {
+    to {
+        stroke-dasharray: 2357, 2357;
+    }
 }
 
 .check-mark-fig-2 {
-    stroke-dasharray: 100%;
-    stroke-dashoffset: 100%;
-    animation: dash 250ms 1 forwards ease-in;
-    animation-delay: 250ms;
+    stroke-dasharray: 320, 320;
+    stroke-dashoffset: 320;
+    animation: dash-2 300ms 1 forwards ease-in;
+    animation-delay: 450ms;
 }
 
-@keyframes dash {
-    from {
-        stroke-dashoffset: 100%;
-    }
+@keyframes dash-2 {
     to {
         stroke-dashoffset: 0;
     }
