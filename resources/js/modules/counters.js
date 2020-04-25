@@ -92,7 +92,7 @@ let counters = {
                     );
                 }
             } else {
-                counters.results.htmlObj.innerHTML = '<tr><td></td><td colspan="2">No data</td><td></td><td></td></tr>';
+                counters.results.htmlObj.innerHTML = '<tr class="empty-data"><td colspan="4">Nobody played yet 🙁</td></tr>';
             }
         }
     }

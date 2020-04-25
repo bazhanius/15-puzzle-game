@@ -30,8 +30,9 @@ table {
     border-collapse: collapse;
     min-width: calc(var(--tile-width) * 4);
     font-size: calc(var(--tile-width) * 0.3);
-    font-family: "JetBrains Mono", monospace;
+    font-family: "Exo 2", sans-serif;
     text-shadow: #fff 1px 1px;
+    color: #1d1d1f;
 }
 
 td, th {
@@ -44,10 +45,11 @@ th {
 
 td:nth-child(3), td:nth-child(4) {
     text-align: right;
+    font-family: "JetBrains Mono", monospace;
 }
 
 tbody > tr:hover > td {
-    background-color: gold;
+    background-color: #eee;
 }
 
 tbody > tr:hover > td:nth-child(4) {
@@ -56,4 +58,11 @@ tbody > tr:hover > td:nth-child(4) {
 
 tbody > tr:hover > td:nth-child(1) {
     border-radius: 200px 0 0 200px;
+}
+
+tr.empty-data:hover > td {
+    background-color: transparent;
+}
+.empty-data > td {
+    text-align: center;
 }

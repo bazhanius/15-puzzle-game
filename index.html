@@ -160,18 +160,16 @@
             <span class="game-menu-option__icon mdi mdi-format-list-numbered"></span>
             <span class="game-menu-option__title">Scores</span>
         </div>
-        <div class="game-menu-option">
+        <div class="game-menu-option" onClick="window.location='https://github.com/bazhanius/15-puzzle-game';">
             <span class="game-menu-option__icon mdi mdi-github"></span>
             <span class="game-menu-option__title">GitHub</span>
-            <!--
-            <a href="https://github.com/bazhanius/15-puzzle-game">View on Github</a>
-            -->
         </div>
     </div>
 
 </div>
 <!-- /Main Menu Screen -->
 
+<!-- Result Screen -->
 <div class="result-screen">
 
     <div class="result-screen__header">
@@ -187,8 +185,28 @@
         </svg>
     </div>
 
-</div>
+    <div class="result-screen__highlights">
+        <div class="highlights__input-container">
+            <label class="input-container__label">Type nickname to save score:</label>
+            <input class="input-container__input"
+                   type="text"
+                   maxlength="20"
+                   autocomplete="off"
+                   autocorrect="off"
+                   autocapitalize="off"
+                   spellcheck="false"
+                   placeholder="e.g. Jordan">
+        </div>
+        <div class="game-menu-option" id="save">
+            <span class="game-menu-option__icon mdi mdi-content-save"></span>
+            <span class="game-menu-option__title">Save</span>
+        </div>
+    </div>
 
+</div>
+<!-- /Result Screen -->
+
+<!-- Scores Screen -->
 <div class="scores-screen">
     <div class="game-title">
         <span class="game-title__text game-title__text-small">High scores</span>
@@ -212,6 +230,7 @@
         </table>
     </div>
 </div>
+<!-- /Scores Screen -->
 
 <div class="x-close">
     <div class="game-menu-option">
@@ -220,9 +239,11 @@
     </div>
 </div>
 
+<!-- Transition Screen -->
 <div class="transition-screen">
     <div class="circle"></div>
 </div>
+<!-- /Transition Screen -->
 
 <!-- Countdown Screen -->
 <div class="countdown">
@@ -232,7 +253,6 @@
     <div class="countdown__digit digit__delay-4">GO!</div>
 </div>
 <!-- /Countdown Screen -->
-
 
 </body>
 </html>

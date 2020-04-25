@@ -9,6 +9,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
 
+
+@font-face{
+    font-family: 'JetBrains Mono';
+    src: url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/web/eot/JetBrainsMono-Regular.eot') format('embedded-opentype'),
+    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/web/woff2/JetBrainsMono-Regular.woff2') format('woff2'),
+    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/web/woff/JetBrainsMono-Regular.woff') format('woff'),
+    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/ttf/JetBrainsMono-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 @media only screen and (orientation : landscape) {
     body {
         --tile-width: 10vh;
@@ -83,36 +94,6 @@ a:hover, a:focus {
 
 canvas {
     pointer-events: none;
-}
-
-.countdown {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    height: calc(100% - 0.5px);
-    width: calc(100% - 0.5px);
-    /*background-color: rgba(255, 255, 255, 0.5);*/
-    /*overflow: hidden;*/
-    /*background: linear-gradient(#fff, transparent);*/
-
-    /*backdrop-filter: blur(2px);*/
-    /*backdrop-filter: grayscale(100%) blur(3px);*/
-    transform-style: preserve-3d;
-    transform: translateZ(10vw);
-
-    animation: shutdown 4s 1 forwards;
-}
-
-
-
-
-@keyframes shutdown {
-    to {
-        visibility: hidden;
-    }
 }
 
 .tiles-container {
@@ -261,4 +242,18 @@ canvas {
     left: 0;
     margin: calc(var(--tile-width) * .35) 0;
     padding: 0;
+}
+
+kbd {
+    display: inline-block;
+    padding: 3px 5px;
+    font: 11px SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+    line-height: normal;
+    line-height: 10px;
+    color: #444d56;
+    vertical-align: middle;
+    background-color: #fafbfc;
+    border: 1px solid #d1d5da;
+    border-radius: 3px;
+    box-shadow: inset 0 -1px 0 #d1d5da;
 }

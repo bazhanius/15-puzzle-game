@@ -27,9 +27,53 @@
     bottom: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: row;
+    padding: 0 0 0 10px;
+    margin-bottom: calc(var(--tile-width) / 2);
+}
+
+.result-screen__highlights::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 75%;
+    top: 5%;
+    left: 0;
+    z-index: -2;
+    /*background-color: #fbf87a;*/
+    background-color: #eee;
+    transform: rotate(-1deg);
+}
+
+.highlights__input-container {
+    display: flex;
     flex-direction: column;
-    margin-bottom: var(--tile-width);
+}
+
+.input-container__label {
+    font-size: 0.8em;
+    color: #6a737d;
+}
+
+.input-container__input {
+    font-family: "Exo 2", sans-serif;
+    font-size: 18px;
+    height: 36px;
+    padding: 0 10px;
+    margin: 5px 0 10px;
+    outline: none !important;
+    border: none;
+    background: white;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.input-container__input:focus {
+    box-shadow: 0 0 0 2px #0077ED;
+}
+
+.input-container__input::placeholder {
+    color: rgba(29, 29, 31, 0.5);
 }
 
 .result-screen__header {
