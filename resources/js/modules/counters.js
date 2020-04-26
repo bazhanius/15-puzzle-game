@@ -57,7 +57,7 @@ let counters = {
     },
 
     results: {
-        list: [],
+        list: JSON.parse(localStorage.getItem('scoresList')) || [],
         htmlObj: undefined,
         add(nick, moves, time) {
             if (!nick) nick = 'Anonymous';
@@ -66,7 +66,12 @@ let counters = {
                 moves: moves,
                 time: time
             });
+            localStorage.setItem('scoresList', JSON.stringify(counters.results.list));
             counters.results.updateHTML('byMoves');
+        },
+        clearAll() {
+            counters.results.list = [];
+            localStorage.clear();
         },
         updateHTML(type) {
             if (!this.htmlObj) this.htmlObj = document.querySelector('.high-scores');

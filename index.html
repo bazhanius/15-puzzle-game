@@ -1,30 +1,57 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>15 game puzzle</title>
+    <title>15 puzzle game</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <!-- MDI Fonts -->
+    <!-- Favicon List -->
+    <link rel="apple-touch-icon" sizes="180x180" href="resources/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Open Graph data -->
+    <meta property="og:type" content="website">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:url" content="https://bazhanius.github.io/15-puzzle-game/">
+    <meta property="og:image" content="https://bazhanius.github.io/15-puzzle-game/resources/images/icon_512x512.png">
+    <meta property="og:title" content="15 puzzle game">
+    <meta property="og:description" content="Slide 15 tiles inside square 4×4 frame to order them from 1 to 15.">
+
+    <!-- Styles & scripts by vendors -->
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.0.45/css/materialdesignicons.min.css">
-
-
     <script src="resources/js/confetti.js" type="text/javascript"></script>
+
+    <!-- Styles & scripts -->
     <link href="resources/css/app.css" rel="stylesheet" type="text/css" />
     <link href="resources/css/main-menu-screen.css" rel="stylesheet" type="text/css" />
     <link href="resources/css/transition-screen.css" rel="stylesheet" type="text/css" />
     <link href="resources/css/result-screen.css" rel="stylesheet" type="text/css" />
     <link href="resources/css/scores-screen.css" rel="stylesheet" type="text/css" />
     <link href="resources/css/countdown-screen.css" rel="stylesheet" type="text/css" />
-
     <script src="resources/js/modules/counters.js" type="text/javascript"></script>
     <script src="resources/js/modules/field.js" type="text/javascript"></script>
-
     <script src="resources/js/modules/actions.js" type="text/javascript"></script>
-
     <script src="resources/js/app.js" type="text/javascript"></script>
+
 </head>
 <body>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(62316157, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+    });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/62316157" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 
 <!-- Game Screen -->
 <div class="game-screen">
@@ -232,12 +259,14 @@
 </div>
 <!-- /Scores Screen -->
 
+<!-- Main menu button -->
 <div class="x-close">
     <div class="game-menu-option">
         <span class="game-menu-option__icon mdi mdi-arrow-left"></span>
         <span class="game-menu-option__title">Menu</span>
     </div>
 </div>
+<!-- /Main menu button -->
 
 <!-- Transition Screen -->
 <div class="transition-screen">
