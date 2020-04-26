@@ -82,14 +82,16 @@ function ready() {
             setTimeout(function(){
                 clearInterval(gameState.interval);
                 gameState.play();
-                counters.seconds.start();
-                counters.moves.reset();
                 countdownScreenDigits.forEach( (x) => {
                     x.classList.remove('digit__anim-fly-in');
                 });
             }, 4000);
         },
         play() {
+            actions.keyEvents.init();
+            actions.clickOnCubes.init();
+            counters.seconds.start();
+            counters.moves.reset();
             clearInterval(this.interval);
             btnClose.style.display = 'block';
             gameMetrics.classList.remove('hidden');
@@ -97,6 +99,8 @@ function ready() {
             countdownScreen.style.display = 'none';
         },
         theEnd() {
+            actions.keyEvents.destroy();
+            actions.clickOnCubes.destroy();
             results = {
                 'moves': counters.moves.value,
                 'time': counters.seconds.getTime()
@@ -156,12 +160,13 @@ function ready() {
     };
 
     btnClose.onclick = function() {
+        actions.keyEvents.destroy();
+        actions.clickOnCubes.destroy();
         gameState.transition('toMainMenu');
     };
 
-    actions.keyEvents.init();
+    /* Init App */
     actions.dragField.init();
-    actions.clickOnCubes.init();
     gameState.mainMenu();
     counters.results.updateHTML('byMoves');
 
