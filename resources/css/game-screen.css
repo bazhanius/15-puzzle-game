@@ -1,0 +1,131 @@
+/**
+ *
+ * Copyright (c) 2020 Alexander Bazhanov
+ * https://github.com/bazhanius/
+ *
+ */
+
+.game-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+.game-metrics {
+    display: flex;
+    justify-content: space-between;
+    font-family: "JetBrains Mono", monospace;
+    width: calc(var(--tile-width) * 4);
+    color: var(--gray-lite);
+    margin-top: 10px;
+}
+
+.tiles-container {
+    display: inline-block;
+    width: calc(var(--tile-width) * 4);
+    height: calc(var(--tile-width) * 4);
+    background-color: var(--gray);
+    border-radius: 2px;
+    transform-style: preserve-3d;
+    transform: rotateX(20deg);
+    cursor: grab;
+}
+
+.start-position {
+    transform: rotateX(35deg) rotateY(-15deg) rotateZ(30deg);
+    animation: to-start 60s 1 linear;
+}
+
+.end-position {
+    animation: to-end 4s 1 linear;
+}
+
+@keyframes to-start {
+    0%   {transform: rotateX(15deg) rotateY(0) rotateZ(0);}
+    100% {transform: rotateX(35deg) rotateY(-15deg) rotateZ(30deg);}
+}
+@keyframes to-end {
+    0%   {transform: rotateX(35deg) rotateY(-15deg) rotateZ(30deg);}
+    100% {transform: rotateX(15deg) rotateY(0deg) rotateZ(0deg);}
+}
+@keyframes rotate {
+    0%   {transform: rotateY(0deg);}
+    100% {transform: rotateY(360deg);}
+}
+
+.cube {
+    transform-style: preserve-3d;
+    transition: background-color 100ms, transform 100ms;
+}
+
+.tile {
+    width: var(--tile-width);
+    height: var(--tile-width);
+    position: absolute;
+    box-sizing: border-box;
+    border-radius: 2px;
+    border: 1px solid var(--gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "JetBrains Mono", monospace;
+    font-size: calc(var(--tile-width) / 2.5);
+}
+
+.left {
+    width: calc(var(--tile-width) / 4);
+    transform: translateX(calc(var(--tile-width) * -0.125)) translateZ(calc(var(--tile-width) * 0.125)) rotateY(90deg);
+    background-color: goldenrod;
+}
+
+.right {
+    width: calc(var(--tile-width) / 4);
+    transform: translateX(calc(var(--tile-width) * 0.875)) translateZ(calc(var(--tile-width) * 0.125)) rotateY(90deg);
+    background-color: goldenrod;
+}
+
+.top {
+    height: calc(var(--tile-width) / 4);
+    transform: translateY(calc(var(--tile-width) * -0.125)) translateZ(calc(var(--tile-width) * 0.125)) rotateX(90deg);
+    background-color: gold;
+}
+
+.bottom {
+    height: calc(var(--tile-width) / 4);
+    transform: translateY(calc(var(--tile-width) * 0.875)) translateZ(calc(var(--tile-width) * 0.125)) rotateX(90deg);
+    background-color: darkgoldenrod;
+}
+
+.front {
+    transform: translateZ(calc(var(--tile-width) / 4));
+    background: gold;
+}
+
+.cube {transform: translateX(5vw)}
+
+.cube-1  {transform: translateX(0) translateY(0);}
+.cube-2  {transform: translateX(calc(var(--tile-width))) translateY(0);}
+.cube-3  {transform: translateX(calc(var(--tile-width) * 2)) translateY(0);}
+.cube-4  {transform: translateX(calc(var(--tile-width) * 3)) translateY(0);}
+.cube-5  {transform: translateX(0)  translateY(calc(var(--tile-width)));}
+.cube-6  {transform: translateX(calc(var(--tile-width)))  translateY(calc(var(--tile-width)));}
+.cube-7  {transform: translateX(calc(var(--tile-width) * 2)) translateY(calc(var(--tile-width)));}
+.cube-8  {transform: translateX(calc(var(--tile-width) * 3)) translateY(calc(var(--tile-width)));}
+.cube-9  {transform: translateX(0)  translateY(calc(var(--tile-width) * 2));}
+.cube-10 {transform: translateX(calc(var(--tile-width)))  translateY(calc(var(--tile-width) * 2));}
+.cube-11 {transform: translateX(calc(var(--tile-width) * 2)) translateY(calc(var(--tile-width) * 2));}
+.cube-12 {transform: translateX(calc(var(--tile-width) * 3)) translateY(calc(var(--tile-width) * 2));}
+.cube-13 {transform: translateX(0)  translateY(calc(var(--tile-width) * 3));}
+.cube-14 {transform: translateX(calc(var(--tile-width))) translateY(calc(var(--tile-width) * 3));}
+.cube-15 {transform: translateX(calc(var(--tile-width) * 2)) translateY(calc(var(--tile-width) * 3));}

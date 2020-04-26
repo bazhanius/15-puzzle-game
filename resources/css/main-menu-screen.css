@@ -44,8 +44,7 @@
     top: 15%;
     left: 0;
     z-index: -1;
-    /*background-color: #fbf87a;*/
-    background-color: #FEF102;
+    background-color: var(--yellow);
     transform: rotate(-2deg);
 }
 
@@ -58,8 +57,7 @@
     line-height: 1.07143;
     letter-spacing: -.005em;
     font-size: calc(var(--tile-width));
-    /*color: #07c;*/
-    color: #06c;
+    color: var(--blue);
 }
 
 .game-title__text-small {
@@ -75,7 +73,7 @@
     justify-content: center;
     font-family: "Exo 2", sans-serif;
     font-weight: 500;
-    color: #0077ED;
+    color: var(--blue-btn);
     text-shadow: 2px 1px 0 white;
     text-transform: uppercase;
     letter-spacing: .3em;
@@ -85,7 +83,7 @@
 }
 
 .game-menu-option__icon {
-    color: #0077ED;
+    color: var(--blue-btn);
     text-shadow: 2px 1px 0 white;
     padding: 0 10px;
     font-size: calc(var(--tile-width));
@@ -94,14 +92,13 @@
 }
 
 .game-menu-option__title {
-    color: #06c;
+    color: var(--blue);
     text-shadow: 2px 1px 0 white;
     padding: 0 10px;
 }
 
 .game-menu-option:hover {
     cursor: pointer;
-    color: #1d1d1f;
 }
 
 .game-menu-option::before {
@@ -118,7 +115,7 @@
 }
 
 .game-menu-option:hover::before {
-    background-color: #FEF102;
+    background-color: var(--yellow);
     width: 100%;
 }
 

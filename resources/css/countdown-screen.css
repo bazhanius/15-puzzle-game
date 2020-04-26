@@ -25,10 +25,10 @@
     position: absolute;
     font-size: calc(var(--tile-width) * 3);
     margin: 0;
-    /*padding: 0 0 calc(var(--tile-width) * 0.75) 0;*/
+    padding: 0 0 calc(var(--tile-width) * 0.75) 0;
     font-family: 'Exo 2', cursive;
     font-weight: 600;
-    color: #06c;
+    color: var(--blue);
     text-shadow: 2px 1px 0 white;
     transform-style: preserve-3d;
     transform: scale(0.5);
@@ -39,38 +39,14 @@
     animation: countdown-fly-out 1s 1 ease-in;
 }
 
-.digit__delay-1 {
-    animation-delay: 0s;
-}
-
-.digit__delay-2 {
-    animation-delay: 1s;
-}
-
-.digit__delay-3 {
-    animation-delay: 2s;
-}
-
-.digit__delay-4 {
-    animation-delay: 3s;
-    color: #EF1D26;
-}
+.digit__delay-1 {animation-delay: 0s;}
+.digit__delay-2 {animation-delay: 1s;}
+.digit__delay-3 {animation-delay: 2s;}
+.digit__delay-4 {animation-delay: 3s; color: var(--red);}
 
 @keyframes countdown-fly-out {
-    0% {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-    50% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    99% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(0.5);
-        opacity: 0;
-    }
+    0%   {transform: scale(0.5); opacity: 0;}
+    50%  {transform: scale(1);   opacity: 1;}
+    99%  {transform: scale(1);   opacity: 1;}
+    100% {transform: scale(0.5); opacity: 0;}
 }

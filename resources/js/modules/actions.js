@@ -73,7 +73,8 @@ let actions = {
                 cube.removeEventListener(actions.clickOnCubes.clickType, actions.clickOnCubes.commands, false);
             });
         },
-        commands() {
+        commands(event) {
+            if (event.defaultPrevented) return;
             let cubeNumber = parseInt( this.getElementsByClassName('front')[0].textContent );
             let cube = field.getCubeParametersByNumber(cubeNumber);
             let emptySpot = field.getCubeParametersByNumber(0);

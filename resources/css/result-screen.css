@@ -41,8 +41,7 @@
     top: 5%;
     left: 0;
     z-index: -2;
-    /*background-color: #fbf87a;*/
-    background-color: #eee;
+    background-color: var(--gray-super-lite);
     transform: rotate(-1deg);
 }
 
@@ -53,7 +52,7 @@
 
 .input-container__label {
     font-size: 0.8em;
-    color: #6a737d;
+    color: var(--gray-lite);
 }
 
 .input-container__input {
@@ -64,16 +63,15 @@
     margin: 5px 0 10px;
     outline: none !important;
     border: none;
-    background: white;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
 }
 
 .input-container__input:focus {
-    box-shadow: 0 0 0 2px #0077ED;
+    box-shadow: 0 0 0 2px var(--blue-btn);
 }
 
 .input-container__input::placeholder {
-    color: rgba(29, 29, 31, 0.5);
+    color: var(--gray-lite);
 }
 
 .result-screen__header {
@@ -90,7 +88,7 @@
 
 .check-mark-fig-1, .check-mark-fig-2 {
     fill: none;
-    stroke: #3bd53e;
+    stroke: var(--green);
     stroke-width: calc(var(--tile-width) / 2);
     stroke-linecap: butt;
     stroke-linejoin: arcs;
