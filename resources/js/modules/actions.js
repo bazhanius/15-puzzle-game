@@ -57,17 +57,20 @@ let actions = {
     },
     clickOnCubes: {
         htmlObj: undefined,
+        clickType: (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0))
+            ? 'touchstart'
+            : 'click',
         init() {
             if (!this.htmlObj) this.htmlObj = document.querySelectorAll('.cube');
 
             this.htmlObj.forEach((cube) => {
-                cube.addEventListener('click', actions.clickOnCubes.commands, false);
+                cube.addEventListener(actions.clickOnCubes.clickType, actions.clickOnCubes.commands, false);
             });
         },
         destroy() {
             if (!this.htmlObj) return;
             this.htmlObj.forEach((cube) => {
-                cube.removeEventListener('click', actions.clickOnCubes.commands, false);
+                cube.removeEventListener(actions.clickOnCubes.clickType, actions.clickOnCubes.commands, false);
             });
         },
         commands() {
