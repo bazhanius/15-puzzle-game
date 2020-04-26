@@ -107,6 +107,7 @@ function ready() {
             counters.seconds.stop();
         },
         submitResult(nickname) {
+            if (confetti.isRunning()) confetti.remove();
             counters.results.add(nickname, results.moves, results.time);
         },
         transition(type) {
