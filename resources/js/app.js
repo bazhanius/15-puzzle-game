@@ -111,7 +111,8 @@ function ready() {
             counters.seconds.stop();
         },
         submitResult(nickname) {
-            if (confetti.isRunning()) confetti.remove();
+            let el = document.getElementById("confetti-canvas");
+            if (el) el.parentNode.removeChild(el);
             counters.results.add(nickname, results.moves, results.time);
         },
         transition(type) {
@@ -144,6 +145,11 @@ function ready() {
         about() {
             //
         }
+    };
+
+    resultScreenInput.onfocus = function() {
+        let el = document.getElementById("confetti-canvas");
+        if (el) el.parentNode.removeChild(el);
     };
 
     btnSave.onclick = function() {
