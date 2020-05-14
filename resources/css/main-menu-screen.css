@@ -24,7 +24,7 @@
 .main-menu-options {
     display: flex;
     flex-direction: row;
-    margin: calc(var(--tile-width) * .7) 0;
+    margin: calc(var(--tile-width) * .8) 0;
 }
 
 .game-title, .game-menu-option {
@@ -32,7 +32,7 @@
 }
 
 .game-title {
-    margin: calc(var(--tile-width) * .7) 0;
+    margin: calc(var(--tile-width) * .8) 0;
     pointer-events: none;
 }
 
