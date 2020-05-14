@@ -44,8 +44,8 @@ body {
     --green: #3bd53e;
     width: calc(100% - 0.5px);
     height: calc(100% - 0.5px);
-    height: calc(100% - 0.5px + constant(safe-area-inset-top) + constant(safe-area-inset-bottom));
-    height: calc(100% - 0.5px + env(safe-area-inset-top) + env(safe-area-inset-bottom));
+    height: calc(100% - 0.5px + constant(safe-area-inset-top));
+    height: calc(100% - 0.5px + env(safe-area-inset-top));
     margin: 0;
     padding: 0;
     font-family: "Exo 2", sans-serif;
