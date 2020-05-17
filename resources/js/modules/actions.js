@@ -57,9 +57,11 @@ let actions = {
     },
     clickOnCubes: {
         htmlObj: undefined,
-        clickType: (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0))
+        clickType: (window.PointerEvent) ? 'pointerdown' : (
+            (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0))
             ? 'touchstart'
-            : 'click',
+            : 'click'
+        ),
         init() {
             if (!this.htmlObj) this.htmlObj = document.querySelectorAll('.cube');
 
